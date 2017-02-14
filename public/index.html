@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reservationApp">
+<head>
+    <title>Tim's Restaurant Reserve</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        header { color: white;
+            background-color: #00897b;}
+        body {
+        /*    background-color: #002C3B;*/
+             background-color: #00897b;            
+        }
+
+        .panel{
+            background-color: white;
+        }
+        .seating-panel {
+            
+        }
+        .login-panel {
+            width: 60%;
+            margin: auto;
+
+        }
+        .login-inside-panel {
+            margin: 30px 0px;
+        }
+        .owner-paging {
+            float: right;
+        }
+        .owner-panel {
+            background-color: white;
+        }
+        .validate{
+            color: red;
+        }
+        .tableCircle {
+            float: left;
+            width: 150px;
+            height: 150px;
+            border: 1px solid;
+            border-radius: 50%;
+            background-color: #72888F;
+            color: white;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .tableSquare {
+            float: left;
+            width: 150px;
+            height: 150px;
+            border: 1px solid;
+            border-radius: 5px;
+            background-color: #72888F;
+            color: white;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        /*search bar slide effect part*/
+        .searchGroup {
+            width: 5px;
+            padding: 2px;
+            border-left: none;
+            box-shadow: none;
+            border-radius: 5px;
+        }
+        .searchBtn {
+            border-radius: 5px;
+            border-right: none;
+            padding-right: 9px;
+        }
+      /*  .input-group .form-control {
+            width: 5px;
+            padding: 2px;
+            border-left: none;
+            box-shadow: none;
+            border-radius: 5px;
+        }*/
+        .searchBox {
+            /*visibility: hidden;*/
+            transition: all 1s;
+        }
+        .searchGroup:hover .searchBox {
+            /*visibility: visible;*/
+            width: 200px;
+            padding-left: 8px;
+        }
+
+        /*CC test*/
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;}
+
+
+/*CC test end*/
+
+
+/**/
+section{margin: 10px auto;}
+/*nav.custom{margin: 300px, 0px, 0px, 0px;}*/
+/*ul.logPanel li{list-style: none;
+                display: inline-block;
+                color:white;}
+ul.logPanel li a{text-decoration: none;}*/
+
+/*.test1{background-color: #00897b;
+        color: white;}*/
+
+/*div.navR1 {border:10px solid #00897b;}*/
+div.navRBackground {background-color: #00897b;
+            }
+ul.navRight li a{   font-family: Arial, 'Baloo Bhai';
+                    font-size: 40px;
+                    color: white;
+                    /*margin:-6px auto;*/
+                    }
+#guser{color:black;}
+#guser1{color:black;}
+#guser2{color:black;}
+#button1{color:black;
+        text-decoration: none;
+        }
+#button2{color:black;
+        text-decoration: none;}
+ul.button12 li{margin-bottom: 20px;
+                list-style: none;}
+/*ul.navRight li a:hover{color:#00897b;}*/
+h1{font-family: Arial, 'Baloo Bhai';
+    font-size: 40px;
+    margin:50px auto;}
+/*.navbarcustom{color: #00897b;
+    border-radius: 0px;}*/
+/*ul.navRight li{text-align: center;}*/
+ul.navbarcustom {color: #00897b;
+                border-radius: 0px;}
+
+
+/**/
+
+    </style>
+</head>
+
+
+<body>
+<header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <figure>
+                            <img src="https://cdn0.iconfinder.com/data/icons/christmas-2-3/128/57-128.png" alt="titleIcon" height="128px" width="128px";/>
+                        </figure>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <h1>Tim's Restaurant Reserve</h1>
+                    </div>
+
+                    <div class="col-sm-4">                                               
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+        </header>
+        <nav>
+              <div class="container-fluid navRBackground">            
+                <ul class="nav navbar-nav navbar-right navRight">
+                    <li><a href="#"><span class="glyphicon glyphicon-search"></span>
+                        <button type="button" class="btn btn-info">Search For your restaurant Choice</button>
+                        </a>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-glass"></span>
+                                <button type="button" class="btn btn-info">Restaurant Information</button>
+                                </a>
+                         
+                                
+                            </li>
+                 <!--  <li> -->
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span><button type="button" class="btn btn-info">Chef</button></a>        
+                               
+                            </li>
+                 <!--  </li> -->
+                  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+                              <!--   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1">The Restaurant Owner ?</button> -->
+                              <button type="button" class="btn btn-info">More Information</button>
+                                </a>
+                            
+                               
+                            </li>
+                </ul>
+              </div>
+        <!--    </nav>
+        </div> -->
+        </nav>
+<!--  This is navigation bar at head  -->
+<!-- <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/login"><span class="glyphicon glyphicon-cutlery"></span>Restaurant</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link1</a></li>
+            <li><a href="#/login"><span class="glyphicon glyphicon-share-alt">Logout</span></a></li>
+        </ul>
+    </div>
+</nav> -->
+
+ <section>
+<div class="container">
+    <div ng-view></div>
+</div>
+</section>  
+<section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+   
+</section>
+ <section>
+            <div class="container">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                      <li data-target="#myCarousel" data-slide-to="1"></li>
+                      <li data-target="#myCarousel" data-slide-to="2"></li>
+                      <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                      <div class="item active"> 
+                      <!-- <div class="item"> -->
+                        <img src="http://hotelgrandplazabd.com/img/gallery/restaurant/resgallery_2.jpg" alt="Chania" width="1600" height="900">
+                      </div>
+
+                      <div class="item">
+                        <img src="http://0937154ef1520a634bf6-ff986d361345e377173f9eba74fe7c47.r99.cf1.rackcdn.com/lps/assets/u/HD-The-Reserve-at-The-Westin-Jekyll-Island.jpg" alt="Chania" width="1600" height="900">
+                      </div>
+                    
+                      <div class="item">
+                        <img src="http://0937154ef1520a634bf6-ff986d361345e377173f9eba74fe7c47.r99.cf1.rackcdn.com/lps/assets/u/HD-The-Bar-at-The-Reserve--1-.jpg" alt="Flower" width="1600" height="900">
+                      </div>
+
+                      <div class="item">
+                        <img src="http://3b8b9d6479df63f2debd-828cd1388df050e63363b1562769dba1.r93.cf1.rackcdn.com/lps/assets/u/Detail-PanEVO-Restaurant.jpg" alt="Flower" width="1600" height="900">
+                      </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                                
+            </div>
+        </section>
+
+<!-- <script src="lib/angular/angular.min.js"></script> -->
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="service.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<div class="container login-panel panel">
+    <ul class="nav nav-tabs nav-justified" style="background-color: #31b0d5">
+        <li class="active"><a data-toggle="tab" href="#guestPage">Start Reserve Now!</a></li>
+        <li ><a data-toggle="tab" href="#login">Restaurant Owner?</a></li>
+    </ul>
+
+    <!--  This is the panel inside  -->
+
+    <div class="tab-content login-inside-panel">
+        <div id="guestPage" class="tab-pane fade in active">
+
+          <!--   <h2 class="col-sm-12 page-header" style="color: black"><strong>RESERVATION DETAIL INFORMATION</strong></h2>
+
+ -->           
+         <h2 class="page-header" style="color: black"><strong>RESERVATION DETAIL INFORMATION</strong></h2>
+  <!--Date submit,no validate as form-->
+            <form novalidate name="form" role="form" ng-submit="resCtrl.make()">
+
+                <div class="form-group col-sm-6">
+                    <label for="date">Reserve Date</label>
+                    <span ng-show="form.$submitted || form.date.$touched">
+                    <!--fliter for date, validate information-->
+                        <span ng-show="form.date.$error.required" class="validate">*Date is required</span>
+                    </span>
+                    <p class="input-group">
+                        <input type="text" class="form-control" id="date" name="date" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                     <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="t-time">Reserve Time</label>
+                    <span ng-show="form.$submitted || form.time.$touched">
+                        <span ng-show="form.time.$error.required" class="validate">*Time is required</span>
+                    </span>
+                    <input type="time" id="t-time" name="time" class="form-control" ng-model="resCtrl.reservation.time" required="">
+                </div>
+
+
+                <div class="form-group col-sm-12">
+                    <label for="name">Full Name</label>
+                    <span ng-show="form.$submitted || form.name.$touched">
+                        <span ng-show="form.name.$error.required" class="validate">*Name is required</span>
+                    </span>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Full Name" ng-model="resCtrl.reservation.name" required="">
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="phone">Phone</label>
+                    <span ng-show="form.$submitted || form.phone.$touched">
+                        <span ng-show="form.phone.$error.required" class="validate">*Phone number is required</span>
+                    </span>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone" ng-model="resCtrl.reservation.phone" required="">
+                    <!--NO验证-->
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="email">Email</label>
+                    <span ng-show="form.$submitted || form.email.$touched">
+                        <!--filter for email-->
+                        <span ng-show="form.email.$error.required" class="validate">*Email is required</span>
+                        <span ng-show="form.email.$error.email" class="validate">*Email is invalid</span>
+                    </span>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" ng-model="resCtrl.reservation.email" required="">
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="partySize">Party Size</label>
+                    <span ng-show="form.$submitted || form.size.$touched">
+                        <span ng-show="form.size.$error.required" class="validate">*party size is required</span>
+                    </span>
+                    <input type="number" class="form-control" id="partySize" name="size" placeholder="Guest Number" ng-model="resCtrl.reservation.size" required="">
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="specialNeed">Special Need</label>
+                    <input type="text" class="form-control" id="specialNeed" name="special" placeholder="example: Birthday, Anniversary" ng-model="resCtrl.reservation.special">
+                </div>
+
+                <div class="form-inline text-center col-md-12">
+                    <button type="submit" class="btn btn-info" ng-click="">Reserve Now</button>
+                    <br>
+                    <a href="#/find"><strong>Want to Change Existing Reservation?</strong></a>
+                </div>
+            </form>
+            <p ng-show="resCtrl.result">Your reservation code is : {{resCtrl.result}}</p>
+        </div>
+        <div id="login" class="tab-pane fade">
+
+            <h2 class="col-sm-12 page-header" style="color: black">Restaurant Owner LOGIN</h2>
+
+            <form role="form" ng-submit="loginCtrl.login()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username " ng-model="loginCtrl.user.username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="loginCtrl.user.password">
+                </div>
+                <div class="form-inline text-center">
+                    <button type="submit" class="btn btn-info">Owner Login</button>
+                    <br>
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
